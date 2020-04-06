@@ -2,23 +2,23 @@ import java.awt.Color;
 
 import acm.util.RandomGenerator;
 
-public class Cow extends LifeForm {
+public class Coyote extends LifeForm {
 	
-	public Cow(Location loc, World w) {
-		super(30, 2, loc, Color.MAGENTA, w);
+	public Coyote(Location loc, World w) {
+		super(15, 3, loc, Color.CYAN, w);
 	}
 	
 	public void reproduce() {
 		int newX = (int)(Math.random()*20);
 		int newY = (int)(Math.random()*20); 
 		
-		myWorld.getCreatureList().add(new Cow(new Location(newX,newY), myWorld));
+		myWorld.getCreatureList().add(new Coyote(new Location(newX,newY), myWorld));
 	}
 	
 	public void moveCreature() {
 		
-		int newX = getMyLocation().getX()+rgen.nextInt(-1, 1);
-		int newY = getMyLocation().getY()+rgen.nextInt(-1, 1);
+		int newX = getMyLocation().getX()+rgen.nextInt(-2, 2);
+		int newY = getMyLocation().getY()+rgen.nextInt(-2, 2);
 		
 		Location newLocation = new Location(newX, newY);
 		

@@ -27,7 +27,7 @@ public class World {
 		for(int i=0; i< currentSizeOfCreatureList; i++) {
 			creatureList.get(i).reproduce();
 		}
-		System.out.println("size of list after reproductin is "+creatureList.size());
+		System.out.println("size of list after reproduction is "+creatureList.size());
 	}
 	
 	public void moveCreatures() {

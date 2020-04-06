@@ -24,6 +24,10 @@ public class WorldController extends GraphicsProgram {
 		theWorld = new World(20,20);
 		theWorld.getCreatureList().add( new Grass( new Location(3,6), theWorld ));
 		theWorld.getCreatureList().add( new Grass( new Location(4,6), theWorld ));
+		theWorld.getCreatureList().add( new Cow( new Location(2,5), theWorld ));
+		theWorld.getCreatureList().add( new Cow( new Location(1,2), theWorld ));
+		theWorld.getCreatureList().add( new Coyote( new Location(6,5), theWorld ));
+		theWorld.getCreatureList().add( new Coyote( new Location(0,7), theWorld ));
 		theWorldCanvas = this.getGCanvas();
 	}
 	

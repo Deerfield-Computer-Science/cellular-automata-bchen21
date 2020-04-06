@@ -14,19 +14,45 @@ public class World {
 	}
 	
 	public void letTimePass(){
-		
 		makeNewCreatures();
-		//eatThings();
-		//creaturesGetOlder();
-		//purgeTheDead();		
+		moveCreatures();
+		eatThings();
+		creaturesGetOlder();
+		purgeTheDead();		
 	}
 	
-	public void makeNewCreatures() {
-		
+	public void makeNewCreatures() {	
 		int currentSizeOfCreatureList = creatureList.size();
 		System.out.println("size of list is "+currentSizeOfCreatureList);
 		for(int i=0; i< currentSizeOfCreatureList; i++) {
 			creatureList.get(i).reproduce();
+		}
+		System.out.println("size of list after reproductin is "+creatureList.size());
+	}
+	
+	public void moveCreatures() {
+		int currentSizeOfCreatureList = creatureList.size();
+		for(int i=0; i< currentSizeOfCreatureList; i++) {
+			creatureList.get(i).moveCreature();
+		}
+	}
+	
+	public void eatThings() {
+		int currentSizeOfCreatureList = creatureList.size();
+		for(int i = 0; i < currentSizeOfCreatureList; i++) {
+			LifeForm creature1 = creatureList.get(i);
+			for(int j = i; j < currentSizeOfCreatureList; j++) {
+				LifeForm creature2 = creatureList.get(j);
+				 if(creature1.getMyLocation().equals(creature2.getMyLocation())) {
+					 if(creature1.getHierarchy() > creature2.getHierarchy()) {
+						 creatureList.remove(j);
+						 j--;
+					 } else if(creature1.getHierarchy() < creature2.getHierarchy()) {
+						 creatureList.remove(i);
+						 i--;
+					 }
+				 }
+			}
 		}
 	}
 	
@@ -41,7 +67,7 @@ public class World {
 	}
 	
 	public void creaturesGetOlder(){
-		for( LifeForm l:creatureList){
+		for(LifeForm l:creatureList){
 			l.age(1);
 		}
 	}

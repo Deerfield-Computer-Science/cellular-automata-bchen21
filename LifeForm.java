@@ -5,25 +5,28 @@ public abstract class LifeForm {
 	
 	protected World myWorld;
 	protected int myLifeSpan;
+	protected int hierarchy;
 	protected Location myLocation;
 	protected Color myColor;
 	protected int myAge;
 	protected boolean alive;
 	
 	// lifeform constructors
-	public LifeForm(int myLifeSpan, Location myLocation, Color myColor, World myWorld) {
+	public LifeForm(int myLifeSpan, int hierarchy, Location myLocation, Color myColor, World myWorld) {
 		super();
 		this.myLifeSpan = myLifeSpan;
+		this.hierarchy = hierarchy;
 		this.myLocation = myLocation;
 		this.myColor = myColor;
 		this.myWorld = myWorld;
 		alive = true;
 	}
 	
-	public LifeForm(Location myLocation, World myWorld) {
+	public LifeForm(Location myLocation, World myWorld, int hierarchy) {
 		super();
 		this.myWorld = myWorld;
 		this.myLocation = myLocation;
+		this.hierarchy = hierarchy;
 		alive = true;
 	}
 	
@@ -41,6 +44,8 @@ public abstract class LifeForm {
 	
 	// to be alive you have to be able to reproduce....
 	public abstract void reproduce();
+	
+	public abstract void moveCreature();
 	
 	public boolean isDead(){
 		return !alive;
@@ -79,6 +84,14 @@ public abstract class LifeForm {
 		this.myAge = age;
 	}
 	
+	public int getHierarchy() {
+		return hierarchy;
+	}
+
+	public void setHierarchy(int hierarchy) {
+		this.hierarchy = hierarchy;
+	}
+
 	@Override
 	public String toString() {
 		return "LifeForm [myLifeSpan=" + myLifeSpan + ", myLocation="
